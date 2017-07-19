@@ -1,0 +1,45 @@
+<body>
+<div>One</div>
+<div>Two</div>
+<div>Three</div>
+<div class="aaa">One</div>
+<div class="bbb">Two</div>
+<div class="aaa">Three</div>
+</body>
+<script>
+
+    function makeGreen(element){
+        element.style.color='green';
+    }
+
+    function makeRed(element){
+        element.style.color='red';
+    }
+
+    function makeBlue(element){
+        element.style.color='blue';
+    }
+
+    function mapNodeList(node_list,f){
+        var list = Array.prototype.slice.call(node_list);
+        list.map(f);
+    }
+
+    function mapTags(tagName,f){
+        mapNodeList(document.getElementsByTagName(tagName),f)
+    }
+    function mapClass(className,f){
+        mapNodeList(document.getElementsByClassName(className),f)
+    }
+
+    function mapAll(selector,f){
+        mapNodeList(document.querySelectorAll(selector),f)
+    }
+
+    mapTags('div',makeRed);
+    mapClass('aaa',makeBlue);
+    mapAll('.aaa',makeGreen);
+
+
+    //Array.prototype.slice.call(document.getElementsByTagName('div')).map(function(n){n.style.color='red'});
+</script>
